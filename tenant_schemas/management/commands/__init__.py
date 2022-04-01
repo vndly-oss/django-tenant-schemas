@@ -3,11 +3,6 @@ from django.conf import settings
 from django.core.management import call_command, get_commands, load_command_class
 from django.core.management.base import BaseCommand, CommandError
 from django.db import connection
-
-try:
-    from django.utils.six.moves import input
-except ImportError:
-    input = raw_input
 from tenant_schemas.utils import get_tenant_model, get_public_schema_name
 
 
