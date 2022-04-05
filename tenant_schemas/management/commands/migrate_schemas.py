@@ -14,6 +14,7 @@ else:
 
 
 class Command(SyncCommon):
+    requires_system_checks = []
     help = "Updates database schema. Manages both apps with migrations and those without."
 
     def __init__(self, stdout=None, stderr=None, no_color=False):

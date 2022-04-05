@@ -6,6 +6,7 @@ from tenant_schemas.management.commands import InteractiveTenantOption
 
 
 class Command(InteractiveTenantOption, BaseCommand):
+    requires_system_checks = []
     help = "Wrapper around django commands for use with an individual tenant"
 
     def run_from_argv(self, argv):
