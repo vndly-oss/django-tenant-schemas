@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Author: Douglas Creager <dcreager@dcreager.net>
 # This file is placed into the public domain.
-
+import os
+import re
 # Calculates the current version number.  If possible, this is the
 # output of “git describe”, modified to conform to the versioning
 # scheme that setuptools uses.  If “git describe” returns an error
@@ -96,6 +97,13 @@ def get_git_version():
 
     # Finally, return the current version.
     return version[1:]
+
+
+def get_version(filename):
+    path = os.path.join(os.path.dirname(__file__), filename)
+    with open(path, encoding="utf-8") as handle:
+        content = handle.read()
+    return re.search(r'__version__ = "([^"]+)"', content).group(1)
 
 
 if __name__ == "__main__":

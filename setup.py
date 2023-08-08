@@ -2,7 +2,7 @@
 
 from os.path import exists
 
-from version import get_git_version
+from version import get_git_version, get_version
 
 try:
     from setuptools import setup
@@ -11,7 +11,7 @@ except ImportError:
 
 setup(
     name='django-tenant-schemas',
-    version=get_git_version(),
+    version=get_version('tenant_schemas/__init__.py'),
     author='Bernardo Pires Carneiro',
     author_email='carneiro.be@gmail.com',
     packages=[
