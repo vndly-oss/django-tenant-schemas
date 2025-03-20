@@ -2,28 +2,15 @@
 
 from os.path import exists
 
-from version import get_git_version, get_version
-
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import find_packages
+from setuptools import setup
 
 setup(
     name='django-tenant-schemas',
-    version=get_version('tenant_schemas/__init__.py'),
     author='Bernardo Pires Carneiro',
     author_email='carneiro.be@gmail.com',
-    packages=[
-        'tenant_schemas',
-        'tenant_schemas.migration_executors',
-        'tenant_schemas.postgresql_backend',
-        'tenant_schemas.management',
-        'tenant_schemas.management.commands',
-        'tenant_schemas.templatetags',
-        'tenant_schemas.test',
-        'tenant_schemas.tests',
-    ],
+    version="1.9.0+vndly-0.0.5",
+    packages=find_packages(),
     scripts=[],
     url='https://github.com/bcarneiro/django-tenant-schemas',
     license='MIT',
@@ -38,9 +25,8 @@ setup(
         "Topic :: Database",
         "Topic :: Software Development :: Libraries",
     ],
-    install_requires=[
-        'Django >= 2.0.0',
-        'psycopg2',
-    ],
+    install_requires=["Django>=2.2", "ordered-set", "psycopg2", "six"],
+    setup_requires=["setuptools-scm"],
+    use_scm_version=True,
     zip_safe=False,
 )
