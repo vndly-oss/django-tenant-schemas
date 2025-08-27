@@ -1,3 +1,3 @@
-default_app_config = 'tenant_schemas.apps.TenantSchemaConfig'
+default_app_config = "tenant_schemas.apps.TenantSchemaConfig"
 
-__version__ = "v1.9.0-vndly-0.0.5"
+__version__ = "1.9.0+vndly-0.0.5"
