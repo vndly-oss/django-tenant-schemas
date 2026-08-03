@@ -28,6 +28,11 @@ def run_migrations(args, options, executor_codename, schema_name, allow_atomic=T
         stdout.write(style.NOTICE("=== Running migrate for schema %s" % schema_name))
 
     connection.set_schema(schema_name)
+
+    # Django 5.x reads options["skip_checks"] in BaseCommand.execute(), but tenant_schemas
+    # calls MigrateCommand().execute() directly (bypassing create_parser), so the key is
+    # never populated. Set it explicitly — this preserves the prior --skip-checks behavior.
+    options.setdefault('skip_checks', True)
     MigrateCommand(stdout=stdout, stderr=stderr).execute(*args, **options)
 
     try:
